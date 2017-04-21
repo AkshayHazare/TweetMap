@@ -5,7 +5,8 @@ import boto.sqs
 import boto.sns
 from boto.sqs.message import Message
 import ast
-
+import utils
+from utils import approve_subscription
 from elasticsearch import Elasticsearch, RequestsHttpConnection
 from requests_aws4auth import AWS4Auth
 import sys
@@ -30,22 +31,27 @@ es = Elasticsearch(
 
 @csrf_exempt
 def sns_subscription(request):
-    headers = json.loads(request.body)
-    print("Serving SNS POST Request")
-    if 'Type' in headers.keys():
-        if headers['Type'] == "SubscriptionConfirmation":
-            print("Received Confirmation Request")
-            subscribeUrl = headers['SubscribeURL']
-            responseData = urlopen(subscribeUrl.read())
-            print ("Subscribed to SNS")
-        elif headers['Type'] == "Notification":
-            print ("Received a new message: " + str(headers["Message"]))
-            message = json.loads(json.loads(headers["Message"]).get('default'))
-            try:
-                es.index(index="tweets", doc_type="twitter_twp", body=message)
-            except Exception, e:
-                print e.message
-    return JsonResponse({'hi': 'hello'})
+    print ("Handling GET Request")
+    if request.method == "GET":
+        context = {"title": "Home"}
+        return render(request, "index.html", context)
+    else:
+        headers = json.loads(request.body)
+        print("Serving SNS POST Request")
+        if 'Type' in headers.keys():
+            if headers['Type'] == "SubscriptionConfirmation":
+                print("Received Confirmation Request")
+                approve_subscription(headers)
+                print ("Subscribed to SNS")
+
+            elif headers['Type'] == "Notification":
+                print ("Received a new message: " + str(headers["Message"]))
+                message = json.loads(json.loads(headers["Message"]).get('default'))
+                try:
+                    es.index(index="tweets", doc_type="twitter_twp", body=message)
+                except Exception, e:
+                    print e.message
+        return JsonResponse({'hi': 'hello'})
 
 
 class IndexView(generic.ListView):

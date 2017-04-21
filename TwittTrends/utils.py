@@ -65,7 +65,7 @@ logger = logging.getLogger(__name__)
 
 def grab_keyfile(cert_url):
     """
-    Function to acqure the keyfile
+    Function to acquire the keyfile
     SNS keys expire and Amazon does not promise they will use the same key
     for all SNS requests. So we need to keep a copy of the cert in our
     cache
