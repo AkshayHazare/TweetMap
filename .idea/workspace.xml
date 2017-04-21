@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c37144f5-7004-481a-b055-fdf70f12b53c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TwittTrends/views.py" afterPath="$PROJECT_DIR$/TwittTrends/views.py" />
-    </list>
+    <list default="true" id="c37144f5-7004-481a-b055-fdf70f12b53c" name="Default" comment="" />
     <ignored path="TwittTrends.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -40,8 +38,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TwittTrends/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="37" column="42" lean-forward="true" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
+            <state relative-caret-position="465">
+              <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
               <folding>
                 <element signature="e#1#23#0" expanded="true" />
               </folding>
@@ -831,8 +829,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TwittTrends/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="37" column="42" lean-forward="true" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
+        <state relative-caret-position="465">
+          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding>
             <element signature="e#1#23#0" expanded="true" />
           </folding>
