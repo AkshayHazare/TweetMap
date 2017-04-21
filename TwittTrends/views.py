@@ -39,7 +39,7 @@ def sns_subscription(request):
     print ("SOME THING PLEASE")
     if request.method == "GET":
         context = {"title": "Home"}
-        return render(request, "index.html", context)
+        return (request, "index.html", context)
     else:
         headers = json.loads(request.body)
         print("Serving SNS POST Request")
