@@ -9,5 +9,5 @@ Group Members:
 2. Harita Jagad
 
 Demo:
-django-env.y8p6wsvzwm.us-west-2.elasticbeanstalk.com
+http://django-env.y8p6wsvzwm.us-west-2.elasticbeanstalk.com
  
