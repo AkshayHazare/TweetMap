@@ -1,6 +1,6 @@
 branch-defaults:
   master:
-    environment: null
+    environment: django-env
     group_suffix: null
 global:
   application_name: TweetMap
