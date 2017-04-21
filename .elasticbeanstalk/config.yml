@@ -1,18 +1,17 @@
 branch-defaults:
   master:
-    environment: Sample-env
-environment-defaults:
-  Sample-env:
-    branch: null
-    repository: null
+    environment: null
+    group_suffix: null
 global:
-  application_name: TwittTrends
-  default_ec2_keyname: null
+  application_name: TweetMap
+  branch: null
+  default_ec2_keyname: TweetMap
   default_platform: Python 2.7
   default_region: us-west-2
   instance_profile: null
   platform_name: null
   platform_version: null
   profile: null
-  sc: null
+  repository: null
+  sc: git
   workspace_type: Application
