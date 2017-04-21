@@ -12,6 +12,7 @@ import sys
 from django.views.decorators.csrf import csrf_exempt
 from django.views import generic
 from django.http import *
+from urllib import urlopen
 
 
 ############
@@ -28,13 +29,27 @@ es = Elasticsearch(
 
 @csrf_exempt
 def sns_subscription(request):
-    mydata = json.loads(request.body)
-    message = (ast.literal_eval(ast.literal_eval(request.body)['Message']))
-    try:
-        es.index(index="tweets", doc_type="twitter_twp", body=message)
-    except Exception,e:
-        print e.message
-    return JsonResponse({'hi': 'hello'})
+ #   mydata = json.loads(request.body)
+ #   message = (ast.literal_eval(ast.literal_eval(request.body)['Message']))
+ #   try:
+ #       es.index(index="tweets", doc_type="twitter_twp", body=message)
+ #   except Exception,e:
+ #       print e.message
+ #   return JsonResponse({'hi': 'hello'})
+    print ("SOME THING PLEASE")
+    if request.method == "GET":
+        context = {"title": "Home"}
+        return render(request, "index.html", context)
+    else:
+        headers = json.loads(request.body)
+        print("Serving SNS POST Request")
+        if 'Type' in headers.keys():
+            if headers['Type'] == "SubscriptionConfirmation":
+                print("Received Confirmation Request")
+                subscribeUrl = headers['SubscribeURL']
+                responseData = urlopen(subscribeUrl).read()
+
+
 
 class IndexView(generic.ListView):
     """
