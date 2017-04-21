@@ -18,7 +18,6 @@ except ImportError:
 
 import base64
 import re
-import pem
 import logging
 import six
 
