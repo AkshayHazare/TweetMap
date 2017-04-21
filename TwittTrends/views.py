@@ -5,8 +5,6 @@ import boto.sqs
 import boto.sns
 from boto.sqs.message import Message
 import ast
-import utils
-from utils import approve_subscription
 from elasticsearch import Elasticsearch, RequestsHttpConnection
 from requests_aws4auth import AWS4Auth
 import sys
@@ -15,6 +13,7 @@ from django.views import generic
 from django.http import *
 from urllib import urlopen
 from django.shortcuts import render
+import signals
 
 
 ############
@@ -41,7 +40,12 @@ def sns_subscription(request):
         if 'Type' in headers.keys():
             if headers['Type'] == "SubscriptionConfirmation":
                 print("Received Confirmation Request")
-                approve_subscription(headers)
+                url = headers['SubscribeURL']
+                result = urlopen(url).read()
+                signals.subscription.send(
+                    sender='bouncy_approve_subscription',
+                    result=result,
+                    notification=headers)
                 print ("Subscribed to SNS")
 
             elif headers['Type'] == "Notification":
