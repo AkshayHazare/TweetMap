@@ -36,6 +36,3 @@ def send_push(device_id, body):
     )
     print "PUBLISH"
     pprint.pprint(publish_result)
-
-if __name__ == '__main__':
-    send_push('022a07a1-b265-4e44-9992-3f83c89e86b6','123')
